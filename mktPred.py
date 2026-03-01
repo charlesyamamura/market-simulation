@@ -54,7 +54,7 @@ y_pred = model.predict(x_test)
 performance = model.evaluate(x_test, t_test, verbose=0)
 
 # Save the trained model
-model_save_path = "suvRegMdl.keras"
+model_save_path = "mktRegMdl.keras"
 model.save(model_save_path)
 print(f"Model saved at: {model_save_path}")
 
