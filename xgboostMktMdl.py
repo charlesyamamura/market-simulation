@@ -137,3 +137,67 @@ for feat in top_features:
 
 plt.tight_layout()
 plt.show()
+
+# ---- 12e. Check feature importance
+from xgboost import plot_importance
+plot_importance(model)
+
+# ---- 13. Grid Search Cross-Validation
+# -----------------------------
+# ---- 13a. Define base XGBoost model
+# -----------------------------
+xgb = XGBRegressor(random_state=42)
+
+# -----------------------------
+# ---- 13b. GridSearchCV parameters
+# -----------------------------
+from sklearn.model_selection import GridSearchCV
+param_grid = {
+    "n_estimators": [200, 400, 600],
+    "max_depth": [3, 5, 7],
+    "learning_rate": [0.01, 0.03, 0.1],
+    "subsample": [0.7, 0.8, 1.0],
+    "colsample_bytree": [0.7, 0.8, 1.0]
+}
+
+grid_search = GridSearchCV(
+    estimator=xgb,
+    param_grid=param_grid,
+    cv=5,
+    scoring="r2",
+    n_jobs=-1,
+    verbose=1
+)
+
+# -----------------------------
+# ---- 13c. Run Grid Search
+# -----------------------------
+grid_search.fit(X_train, y_train)
+
+print("\nBest parameters found:")
+print(grid_search.best_params_)
+
+print("\nBest CV score:")
+print(grid_search.best_score_)
+
+# Best model
+model = grid_search.best_estimator_
+
+# ----- 13d. Get accuracies
+from sklearn import metrics
+def get_regression_metrics(X_train, X_test, y_train, y_test, model):
+    y_train_pred = model.predict(X_train)
+    y_test_pred = model.predict(X_test)
+    
+    metrics_dict = {
+        "train R2": metrics.r2_score(y_train, y_train_pred),
+        "test R2": metrics.r2_score(y_test, y_test_pred),
+        "train RMSE": np.sqrt(metrics.mean_squared_error(y_train, y_train_pred)),
+        "test RMSE": np.sqrt(metrics.mean_squared_error(y_test, y_test_pred)),
+        "train MAE": metrics.mean_absolute_error(y_train, y_train_pred),
+        "test MAE": metrics.mean_absolute_error(y_test, y_test_pred)
+    }
+    return metrics_dict
+
+# Call the function
+get_regression_metrics(X_train, X_test, y_train, y_test, model)
