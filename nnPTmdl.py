@@ -48,7 +48,7 @@ y_test_t  = torch.FloatTensor(y_test)
 # 4. Neural Network Definition
 # -----------------------------
 class SimpleMLP(nn.Module):
-    def __init__(self, input_size, hidden_size=5, dropout=0.1):
+    def __init__(self, input_size, hidden_size=10, dropout=0.2):
         super().__init__()
         self.fc1 = nn.Linear(input_size, hidden_size)
         self.act = nn.LeakyReLU()
@@ -63,7 +63,7 @@ class SimpleMLP(nn.Module):
         return x
 
 input_size = X_train_t.shape[1]
-model = SimpleMLP(input_size=input_size, hidden_size=5, dropout=0.1)
+model = SimpleMLP(input_size=input_size, hidden_size=10, dropout=0.2)
 
 # -----------------------------
 # 5. Loss and Optimizer
