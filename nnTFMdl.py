@@ -43,7 +43,7 @@ y_test  = target_scaler.transform(y_test)
 # 4. Neural Network Definition
 # -----------------------------
 input_size = X_train.shape[1]
-hidden_size = 10
+hidden_size = 8
 dropout_rate = 0.2
 
 model = Sequential([
