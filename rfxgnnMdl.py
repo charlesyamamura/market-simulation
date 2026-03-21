@@ -85,7 +85,7 @@ rf_best = rf_grid.best_estimator_
 # 6. Neural Network (MLP)
 # -----------------------------
 class SimpleMLP(nn.Module):
-    def __init__(self, input_size, hidden_size=10, dropout=0.2):
+    def __init__(self, input_size, hidden_size=8, dropout=0.2):
         super().__init__()
         self.net = nn.Sequential(
             nn.Linear(input_size, hidden_size),
