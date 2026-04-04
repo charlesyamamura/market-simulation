@@ -44,4 +44,3 @@ This code is optimized for Apple Silicon. It automatically detects the mps devic
 
 ```bash
 pip install torch pandas numpy scikit-learn matplotlib xgboost openpyxl
-
