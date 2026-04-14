@@ -1,15 +1,15 @@
-# Forecasting New Product Concepts and Markets: Domain-Integrated Machine Learning
+# New Product Concept and Competitive Market Simulation: Domain-Integrated Machine Learning
 
-XGBoost | Random Forest | PyTorch Deep Learning | PCA
+XGBoost | Random Forest | PyTorch Deep Learning | PCA | LSTM | GRU
 This repository implements a specialized forecasting and design methodology that merges industry domain expertise with machine learning. By utilizing advanced feature engineering, this approach achieves high predictive accuracy on specialized datasets where traditional "Big Data" is unavailable.
-XGBoost, Random Forest, and Deep Learning models are presented. 
+XGBoost, Random Forest, Deep Learning, Recurrent Neural Network (LSTM/GRU) models are presented. 
 A Principal Component Analysis model is used to interpret, understand, and explain market and product features.
 Peer reviewed scientific articles explaining the method in detail are also posted.
 
 ## Project Overview
 
 Domain-Centric Engineering: Leverages industry knowledge to craft features that preclude the need for massive datasets.
-Multi-Model Pipeline: A comparative analysis of Gradient Boosting (XGBoost), Ensemble Learning (Random Forest), and Deep Learning (PyTorch MLP).
+Multi-Model Pipeline: A comparative analysis of Gradient Boosting (XGBoost), Ensemble Learning (Random Forest), Deep Learning (PyTorch MLP), Recurrent Neural Networks: Long Short-Term Memory (LSTM) and Gradient Recurrent Unit (GRU).
 Hardware Acceleration: Optimized for Apple Silicon (M1/M2/M3) using the MPS (Metal Performance Shaders) backend.
 Interpretability: Integrates Principal Component Analysis (PCA) and Feature Importance to decode complex market drivers.
 
@@ -36,6 +36,10 @@ XGBoost          Train 0.900964  0.245493
 XGBoost          Test  0.701305  0.453384
 Neural Network   Train 0.886319  0.263019
 Neural Network   Test  0.710101  0.446659
+LSTM             Train 0.747624  0.391893
+LSTM             Test  0.405669  0.639538
+GRU              Train 0.671260  0.447270
+GRU              Test  0.475414  0.600843
 
 ## 🔧 Setup
 This code is optimized for Apple Silicon. It automatically detects the mps device for accelerated training on Mac M1/M2/M3 chips.
