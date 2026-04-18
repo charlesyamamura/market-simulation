@@ -41,6 +41,9 @@ LSTM             Test  0.405669  0.639538
 GRU              Train 0.671260  0.447270
 GRU              Test  0.475414  0.600843
 
+<img width="846" height="449" alt="image" src="https://github.com/user-attachments/assets/38d2cb02-16b5-4b6b-931d-e4c49b8095fc" />
+
+
 ## 🔧 Setup
 This code is optimized for Apple Silicon. It automatically detects the mps device for accelerated training on Mac M1/M2/M3 chips.
 
