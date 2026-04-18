@@ -46,3 +46,30 @@ plt.savefig('pca_loadings.png')
 
 # Export loadings to CSV for further review
 loadings.to_csv('pca_loadings_results.csv')
+
+# 7. Compute overall feature importance (weighted by explained variance)
+
+# Get explained variance ratios
+var_ratio = pca.explained_variance_ratio_
+
+# Compute weighted importance
+# Square loadings to reflect magnitude, then weight by variance
+importance = (loadings**2).multiply(var_ratio, axis=1).sum(axis=1)
+
+# Sort features by importance
+importance_sorted = importance.sort_values(ascending=False)
+
+# Print results
+print("\nFeature importance (descending):")
+print(importance_sorted)
+
+# Optional: save to CSV
+# importance_sorted.to_csv('feature_importance_pca.csv')
+
+plt.figure(figsize=(10, 6))
+importance_sorted.plot(kind='bar')
+plt.title('Feature Importance (PCA weighted)')
+plt.ylabel('Importance')
+plt.tight_layout()
+plt.savefig('feature_importance.png')
+
