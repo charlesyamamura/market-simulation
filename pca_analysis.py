@@ -47,29 +47,21 @@ plt.savefig('pca_loadings.png')
 # Export loadings to CSV for further review
 loadings.to_csv('pca_loadings_results.csv')
 
-# 7. Compute overall feature importance (weighted by explained variance)
+# Choose number of PCs (e.g., enough to explain 90% variance)
+cum_var = np.cumsum(pca.explained_variance_ratio_)
+n_components = np.argmax(cum_var >= 0.90) + 1
 
-# Get explained variance ratios
-var_ratio = pca.explained_variance_ratio_
+# Recompute importance using only top PCs
+var_ratio_top = var_ratio[:n_components]
+loadings_top = loadings.iloc[:, :n_components]
 
-# Compute weighted importance
-# Square loadings to reflect magnitude, then weight by variance
-importance = (loadings**2).multiply(var_ratio, axis=1).sum(axis=1)
-
-# Sort features by importance
+importance = (loadings_top**2).multiply(var_ratio_top, axis=1).sum(axis=1)
 importance_sorted = importance.sort_values(ascending=False)
 
-# Print results
-print("\nFeature importance (descending):")
+print(f"\nUsing top {n_components} PCs:")
 print(importance_sorted)
 
-# Optional: save to CSV
-# importance_sorted.to_csv('feature_importance_pca.csv')
-
-plt.figure(figsize=(10, 6))
-importance_sorted.plot(kind='bar')
-plt.title('Feature Importance (PCA weighted)')
-plt.ylabel('Importance')
-plt.tight_layout()
-plt.savefig('feature_importance.png')
+importance_pc1 = loadings['PC1'].abs().sort_values(ascending=False)
+print("\nFeature importance based on PC1:")
+print(importance_pc1)
 
