@@ -21,7 +21,7 @@ XGBoost
 - Best parameters: {'colsample_bytree': 1.0, 'learning_rate': 0.1, 'max_depth': 5, 'n_estimators': 200, 'subsample': 0.8}
 
 Bayesian Neural Network
-- Strategy: Markov Chain Monte Carlos (MCMC).
+- Strategy: Markov Chain Monte Carlos (MCMC); No-U-Turn Sampler (NUTS).
 
 Random Forest
 - Strategy: Ensemble of 200–400 estimators with square-root feature selection.
