@@ -44,7 +44,8 @@ LSTM             Train 0.747624  0.391893
 LSTM             Test  0.405669  0.639538
 GRU              Train 0.671260  0.447270
 GRU              Test  0.475414  0.600843
-BNN              Test  0.670500  0.476200
+BNN              Train 0.898688  0.248298
+BNN              Test  0.670466  0.476214
 
 <img width="846" height="449" alt="image" src="https://github.com/user-attachments/assets/38d2cb02-16b5-4b6b-931d-e4c49b8095fc" />
 
