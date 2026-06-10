@@ -82,10 +82,36 @@ def main(args):
     mcmc.run(random.PRNGKey(42), X_train, y_train, D_H=args.hidden_dim)
     mcmc.print_summary()
     
-    print("\nGenerating predictions on test set (2019)...")
     posterior_samples = mcmc.get_samples()
-    
     predictive = Predictive(bnn_model, posterior_samples=posterior_samples)
+
+    # --- 4. Generate Training Predictions & Performance Indicators ---
+    print("\nGenerating predictions on training set (<= 2018)...")
+    train_predictions = predictive(random.PRNGKey(44), X_train, D_H=args.hidden_dim)["obs"]
+    train_predictions_matrix = np.array(train_predictions)
+    
+    num_samples_tr, num_records_tr = train_predictions_matrix.shape
+    train_predictions_rescaled = scaler_y.inverse_transform(
+        train_predictions_matrix.reshape(-1, 1)
+    ).reshape(num_samples_tr, num_records_tr)
+    
+    y_train_actual = scaler_y.inverse_transform(y_train.reshape(-1, 1)).flatten()
+    mean_train_prediction = np.mean(train_predictions_rescaled, axis=0)
+    
+    train_mae = mean_absolute_error(y_train_actual, mean_train_prediction)
+    train_rmse = np.sqrt(mean_squared_error(y_train_actual, mean_train_prediction))
+    train_r2 = r2_score(y_train_actual, mean_train_prediction)
+    
+    print("\n" + "="*40)
+    print("    BNN TRAINING PERFORMANCE METRICS (<= 2018)")
+    print("="*40)
+    print(f"Mean Absolute Error (MAE):     {train_mae:.6f}")
+    print(f"Root Mean Squared Error (RMSE): {train_rmse:.6f}")
+    print(f"R-squared Score (R²):           {train_r2:.6f}")
+    print("="*40)
+    
+    # --- 5. Generate Test Predictions & Performance Indicators ---
+    print("\nGenerating predictions on test set (2019)...")
     predictions = predictive(random.PRNGKey(43), X_test, D_H=args.hidden_dim)["obs"]
     predictions_matrix = np.array(predictions)
     
@@ -99,7 +125,6 @@ def main(args):
     lower_bound = np.percentile(predictions_rescaled, 5.0, axis=0)
     upper_bound = np.percentile(predictions_rescaled, 95.0, axis=0)
     
-    # --- 4. Performance Indicators Computation ---
     mae = mean_absolute_error(y_test_actual, mean_prediction)
     rmse = np.sqrt(mean_squared_error(y_test_actual, mean_prediction))
     r2 = r2_score(y_test_actual, mean_prediction)
@@ -107,9 +132,9 @@ def main(args):
     print("\n" + "="*40)
     print("      BNN TEST PERFORMANCE METRICS (2019)")
     print("="*40)
-    print(f"Mean Absolute Error (MAE):     {mae:.4f}")
-    print(f"Root Mean Squared Error (RMSE): {rmse:.4f}")
-    print(f"R-squared Score (R²):           {r2:.4f}")
+    print(f"Mean Absolute Error (MAE):     {mae:.6f}")
+    print(f"Root Mean Squared Error (RMSE): {rmse:.6f}")
+    print(f"R-squared Score (R²):           {r2:.6f}")
     print("="*40)
     
     # Plotting actual vs predicted with Performance Metadata
@@ -123,8 +148,8 @@ def main(args):
     ax.set_xlabel("Test Data Points (2019 Chronological)")
     ax.set_ylabel("Market Share")
     
-    # Dynamically inject metrics into title for reporting clarity
-    ax.set_title(f"BNN Market Share Forecast\nMAE: {mae:.3f} | RMSE: {rmse:.3f} | R²: {r2:.3f}")
+    # Dynamically inject metrics into title for reporting clarity (6 digits)
+    ax.set_title(f"BNN Market Share Forecast\nMAE: {mae:.6f} | RMSE: {rmse:.6f} | R²: {r2:.6f}")
     ax.legend(loc="upper left")
     
     plt.savefig("bnn_market_share_eval.png")
