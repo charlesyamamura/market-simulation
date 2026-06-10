@@ -43,6 +43,15 @@ GRU              Test  0.475414  0.600843
 
 <img width="846" height="449" alt="image" src="https://github.com/user-attachments/assets/38d2cb02-16b5-4b6b-931d-e4c49b8095fc" />
 
+Bayesian Neural Network:
+========================================
+      BNN TEST PERFORMANCE METRICS (2019)
+========================================
+Mean Absolute Error (MAE):     0.3303
+Root Mean Squared Error (RMSE): 0.4762
+R-squared Score (R²):           0.6705
+========================================
+
 
 ## 🔧 Setup
 This code is optimized for Apple Silicon. It automatically detects the mps device for accelerated training on Mac M1/M2/M3 chips.
