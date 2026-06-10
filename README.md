@@ -49,7 +49,7 @@ BNN              Test  0.670466  0.476214
 
 <img width="846" height="449" alt="image" src="https://github.com/user-attachments/assets/38d2cb02-16b5-4b6b-931d-e4c49b8095fc" />
 
-<img width="1096" height="600" alt="image" src="https://github.com/user-attachments/assets/12b5147e-27f6-46e7-a8af-4d5d5ac34f41" />
+<img width="1095" height="600" alt="image" src="https://github.com/user-attachments/assets/cdd2c76d-d0f1-43bb-96d7-a38b9fd1b328" />
 
 ## 🔧 Setup
 This code is optimized for Apple Silicon. It automatically detects the mps device for accelerated training on Mac M1/M2/M3 chips.
