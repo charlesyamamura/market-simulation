@@ -43,7 +43,7 @@ GRU              Test  0.475414  0.600843
 
 <img width="846" height="449" alt="image" src="https://github.com/user-attachments/assets/38d2cb02-16b5-4b6b-931d-e4c49b8095fc" />
 
-<img width="1055" height="575" alt="image" src="https://github.com/user-attachments/assets/eeb89139-f5df-458e-b7ff-f4ca3cccc9c2" />
+<img width="1055" height="575" alt="image" src="https://github.com/user-attachments/assets/28cfe764-283b-40fd-92e7-ba2db2251330" />
 
 
 ## 🔧 Setup
