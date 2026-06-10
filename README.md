@@ -43,8 +43,7 @@ GRU              Test  0.475414  0.600843
 
 <img width="846" height="449" alt="image" src="https://github.com/user-attachments/assets/38d2cb02-16b5-4b6b-931d-e4c49b8095fc" />
 
-<img width="1055" height="575" alt="image" src="https://github.com/user-attachments/assets/28cfe764-283b-40fd-92e7-ba2db2251330" />
-
+<img width="1096" height="600" alt="image" src="https://github.com/user-attachments/assets/12b5147e-27f6-46e7-a8af-4d5d5ac34f41" />
 
 ## 🔧 Setup
 This code is optimized for Apple Silicon. It automatically detects the mps device for accelerated training on Mac M1/M2/M3 chips.
