@@ -1,6 +1,6 @@
 # New Product Concept and Competitive Market Simulation: Domain-Integrated Machine Learning
 
-XGBoost | Random Forest | PyTorch Deep Learning | PCA | LSTM | GRU
+XGBoost | Bayesian Neural Network | Random Forest | PyTorch Deep Learning | PCA | LSTM | GRU
 This repository implements a specialized forecasting and design methodology that merges industry domain expertise with machine learning. By utilizing advanced feature engineering, this approach achieves high predictive accuracy on specialized datasets where traditional "Big Data" is unavailable.
 XGBoost, Random Forest, Deep Learning, Recurrent Neural Network (LSTM/GRU) models are presented. 
 A Principal Component Analysis model is used to interpret, understand, and explain market and product features.
@@ -10,6 +10,7 @@ Peer reviewed scientific articles explaining the method in detail are also poste
 
 Domain-Centric Engineering: Leverages industry knowledge to craft features that preclude the need for massive datasets.
 Multi-Model Pipeline: A comparative analysis of Gradient Boosting (XGBoost), Ensemble Learning (Random Forest), Deep Learning (PyTorch MLP), Recurrent Neural Networks: Long Short-Term Memory (LSTM) and Gradient Recurrent Unit (GRU).
+Probabilistic Machine Learning: Bayesian Neural Network.
 Hardware Acceleration: Optimized for Apple Silicon (M1/M2/M3) using the MPS (Metal Performance Shaders) backend.
 Interpretability: Integrates Principal Component Analysis (PCA) and Feature Importance to decode complex market drivers.
 
@@ -18,6 +19,10 @@ Interpretability: Integrates Principal Component Analysis (PCA) and Feature Impo
 XGBoost
 - Strategy: Decision trees with Gradient Boosting, optimized via TimeSeriesSplit cross-validation.
 - Best parameters: {'colsample_bytree': 1.0, 'learning_rate': 0.1, 'max_depth': 5, 'n_estimators': 200, 'subsample': 0.8}
+
+Bayesian Neural Network
+- Strategy: Markov Chain Monte Carlos (MCMC).
+- 
 
 Random Forest
 - Strategy: Ensemble of 200–400 estimators with square-root feature selection.
@@ -40,6 +45,7 @@ LSTM             Train 0.747624  0.391893
 LSTM             Test  0.405669  0.639538
 GRU              Train 0.671260  0.447270
 GRU              Test  0.475414  0.600843
+BNN              Test  0.670500  0.476200
 
 <img width="846" height="449" alt="image" src="https://github.com/user-attachments/assets/38d2cb02-16b5-4b6b-931d-e4c49b8095fc" />
 
