@@ -22,7 +22,6 @@ XGBoost
 
 Bayesian Neural Network
 - Strategy: Markov Chain Monte Carlos (MCMC).
-- 
 
 Random Forest
 - Strategy: Ensemble of 200–400 estimators with square-root feature selection.
